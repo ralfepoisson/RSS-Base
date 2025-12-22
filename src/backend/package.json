@@ -1,0 +1,27 @@
+{
+  "name": "rss-base",
+  "version": "1.0.0",
+  "description": "RSS Base is a RSS News Feed data pipeline tool integrated with AI and exposed via an MCP Server. This is intended to be used as a MCP-connected tool for AI Agents to create news summaries for users based on user-curated RSS feeds.",
+  "keywords": [
+    "rss",
+    "ai"
+  ],
+  "homepage": "https://github.com/ralfepoisson/RSS-Base#readme",
+  "bugs": {
+    "url": "https://github.com/ralfepoisson/RSS-Base/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ralfepoisson/RSS-Base.git"
+  },
+  "license": "GPL-3.0-or-later",
+  "author": "Ralfe Poisson",
+  "type": "nodejs",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
