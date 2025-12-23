@@ -1,5 +1,18 @@
 # RSS-Base
+
 RSS News Feed data pipeline tool integrated with AI and exposed via an MCP Server. This is intented to be used as a MCP-connected tool for AI Agents to create news summaries for users based on user-curated RSS feeds.
+
+# Installation
+
+## Prerequisites
+
+In order to deploy the solution infrastructure, Terraform needs to be installed. Note that the infrastructure needs to be deployed to an AWS account.
+
+## Deploying Infrastructure
+
+1. Edit the terraform file /cd/terraform/variables.tf and change the region from `eu-west-1` to the desired target region.
+2. Verify the terraform by running `terraform plan`.
+3. Execute the terraform by running `terraform apply`.
 
 # Architecture
 
