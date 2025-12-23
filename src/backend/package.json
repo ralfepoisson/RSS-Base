@@ -14,6 +14,9 @@
     "type": "git",
     "url": "git+https://github.com/ralfepoisson/RSS-Base.git"
   },
+  "dependencies": {
+    "pg":"~8.16.3"
+  },
   "license": "GPL-3.0-or-later",
   "author": "Ralfe Poisson",
   "type": "nodejs",

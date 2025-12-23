@@ -11,6 +11,7 @@
 // Import libraries
 const Configuration = require('../lib/models/configuration.model');
 const BLL = require('../lib/services/bll.service');
+const AWSService = require('../lib/services/aws.service');
 
 /**
  * Lambda handler
@@ -23,8 +24,8 @@ export const handler = async(event) => {
         const snsTopicArn = process.env.SNS_TOPIC_ARN;
         const rdsHost = process.env.RDS_HOST;
         const rdsPort = process.env.RDS_PORT;
-        const rdsUserSecretArn = process.env.RDS_USER_SECRET_ARN;
-        const rdsPasswordSecretArn = process.env.RDS_PASSWORD_SECRET_ARN;
+        const rdsUser = await AWSService.getSecret(process.env.RDS_USER_SECRET_NAME);
+        const rdsPassword = await AWSService.getSecret(process.env.RDS_PASSWORD_SECRET_NAME);
         const rdsDbName = process.env.RDS_DB_NAME;
 
         // Prepare Configuration
@@ -32,8 +33,8 @@ export const handler = async(event) => {
         config.snsTopicArn = snsTopicArn;
         config.rdsHost = rdsHost;
         config.rdsPort = rdsPort;
-        config.rdsUserSecretArn = rdsUserSecretArn;
-        config.rdsPasswordSecretArn = rdsPasswordSecretArn;
+        config.rdsUser = rdsUser;
+        config.rdsPassword = rdsPassword;
         config.rdsDbName = rdsDbName;
 
         // Validate Configuration
@@ -45,8 +46,10 @@ export const handler = async(event) => {
         const bll = new BLL(config);
 
         // Get RSS Feeds
+        let feeds = await bll.getFeeds();
 
         // Publish RSS Feeds
+        await bll.publishFeeds(feeds);
 
         // Log Success
         console.log(`Successfully loaded feeds`);
